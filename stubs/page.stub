@@ -1,0 +1,72 @@
+<template>
+    <div>
+        <h1 class="py-6 my-2 text-xl">DummyLabel</h1>
+        <grid-template
+            ref="grid"
+            v-model="items"
+            :primary-key="primaryKey"
+            cell-width="100%"
+            @selected="updateSelectedItems"
+        >
+            <template v-slot:cell:id="prop">
+                {{ prop.value }}
+            </template>
+        </grid-template>
+        <div class="bg-white shadow mt-4 py-4 px-4 w-full flex flex-1">
+            <div class="my-2">
+                <ev-button @click="getItems"> <i class="fa fa-database"></i> </ev-button>
+                <ev-button @click="addBlankForm"> <i class="fa fa-plus"></i> </ev-button>
+                <ev-button @click="confirmSubmit"> <i class="fa far fa-pencil-alt"></i> </ev-button>
+            </div>
+            <ev-pagination :total="total" :value="page" @input="setPage" :per-page="perPage" :scope="3" />
+        </div>
+
+    </div>
+</template>
+
+<script>
+    import EvButton from "../components/EvButton";
+    import EvForm from "../components/EvForm";
+    import EvFormField from "../components/EvFormField";
+    import EvTagSelect from "../components/EvTagSelect";
+    import AxiosHelper from "../plugins/AxiosHelper";
+    import ResourceActionGridControl from "../controls/ResourceActionGridControl";
+    import EvInput from "../components/EvInput";
+    import GridTemplate from "../templates/GridTemplate";
+    import EvPagination from "../components/EvPagination";
+
+    export default {
+        name: "DummyTitlePage",
+        components: {
+            EvPagination,
+            GridTemplate,
+            EvInput,
+            ResourceActionGridControl,
+            EvTagSelect, EvFormField, EvForm, EvButton
+        },
+        route: {
+            path: '/DummyFullUri',
+            meta: {
+                layout: 'admin',
+                secured: true
+            }
+        },
+        mixins: [AxiosHelper],
+        data() {
+            return {
+                primaryKey : 'DummyPrimaryKey',
+                uri: '/api/v1/DummyUri'
+            }
+        },
+        computed: {
+            blankFrom() {
+                return DummyForm;
+            }
+        },
+        mounted() {
+            this.getItems();
+        }
+
+    }
+</script>
+

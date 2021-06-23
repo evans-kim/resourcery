@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyModelNameSpace;
+
+use EvansKim\Resourcery\ResourceModel;
+
+class DummyClass extends ResourceModel
+{
+    protected $resource_id = ResourceId;
+    protected $table = 'DummyTable';
+    protected $primaryKey = 'DummyPrimary';
+
+
+    public function rules()
+    {
+        return DummyRules;
+    }
+
+}

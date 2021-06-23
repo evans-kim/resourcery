@@ -1,0 +1,45 @@
+{
+    "name": "evanskim/resourcery",
+    "description": "User Role Resource Authorization Manager for Laravel",
+    "type": "package",
+    "require": {
+        "laravel/framework": ">=5.5",
+        "ext-json": "*",
+        "doctrine/dbal": "^2.10"
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "facade/ignition": "^1.4",
+        "fzaninotto/faker": "^1.4",
+        "guzzlehttp/guzzle": "^6.4",
+        "mmo/guzzle-xdebug-middleware": "^1.0",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EvansKim\\Resourcery\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evans Kim",
+            "email": "korodo@naver.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EvansKim\\Resourcery\\ResourceryServiceProvider"
+            ]
+        }
+    }
+}

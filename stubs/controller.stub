@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyControllerNameSpace;
+
+use EvansKim\Resourcery\Controller\ResourceBasicController;
+
+class DummyClassController extends ResourceBasicController
+{
+    protected $resource_class = 'DummyResourceModelClass';
+}
