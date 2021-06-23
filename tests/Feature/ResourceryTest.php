@@ -230,7 +230,7 @@ class ResourceryTest extends TestCase
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    protected function setupTestTable(): void
+    protected function setupTestTable()
     {
         $parentTest = $this->testData;
         $parentTest['title'] = 'parent-test';

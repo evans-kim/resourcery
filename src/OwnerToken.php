@@ -4,7 +4,9 @@
 namespace EvansKim\Resourcery;
 
 
-class OwnerToken
-{
+use Illuminate\Database\Eloquent\Model;
 
+class OwnerToken extends Model
+{
+    protected $fillable = ['token'];
 }

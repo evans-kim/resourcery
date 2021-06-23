@@ -4,7 +4,7 @@
 namespace EvansKim\Resourcery;
 
 
-class ResourceTest
+class ResourceTest extends ResourceModel
 {
 
 }

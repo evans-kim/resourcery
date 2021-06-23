@@ -57,7 +57,7 @@ class ResourceRouter
     }
     public static function createRoutes()
     {
-        $resourceRouter = new self();
+        $resourceRouter = new static();
         if( $resourceRouter->request->method() === 'GET' ){
             // 히든 랜더링을 위한 라우트 생성
             $prefix = config('resourcery.page_route');
@@ -232,7 +232,7 @@ class ResourceRouter
      * @param ResourceAction $act
      * @param string $ability
      */
-    private function defineGate(ResourceAction $act, string $ability): void
+    private function defineGate(ResourceAction $act, string $ability)
     {
         Gate::define(
             $ability,

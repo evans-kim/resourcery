@@ -3,6 +3,7 @@
     "description": "User Role Resource Authorization Manager for Laravel",
     "type": "package",
     "require": {
+        "php" : ">=7.0",
         "laravel/framework": ">=5.5",
         "ext-json": "*",
         "doctrine/dbal": "^2.10"
@@ -35,6 +36,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "extra": {
         "laravel": {
             "providers": [

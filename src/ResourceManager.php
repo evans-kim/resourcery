@@ -44,8 +44,6 @@ class ResourceManager extends ResourceModel
 {
     use Searchable;
 
-    public static $routed;
-
     protected $fields = [];
     protected $fillable = ['title', 'label', 'class', 'uses', 'table_name'];
     protected $casts = ['uses' => 'bool'];

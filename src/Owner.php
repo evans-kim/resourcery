@@ -2,8 +2,6 @@
 
 namespace EvansKim\Resourcery;
 
-use App\Resources\Address;
-use App\Resources\ResourceTest;
 use EvansKim\Resourcery\Template\OutlookFormat;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -58,11 +56,18 @@ class Owner extends ResourceModel implements
         'email_verified_at' => 'datetime',
     ];
 
+    public function owner_token()
+    {
+        return $this->morphOne(OwnerToken::class, 'owner');
+    }
+
     public function refreshToken()
     {
-        $this->api_token = $this->shakeToken();
-        $this->save();
-        cookie('api_token', $this->api_token, 60 * 24);
+        $token = $this->shakeToken();
+
+        $this->owner_token()->create(['token'=> $token]);
+
+        cookie('owner_token', $token, 60 * 24);
     }
 
     public function shakeToken()

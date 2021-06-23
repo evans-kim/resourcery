@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUsersApiTokenField extends Migration
+class CreateOwnerTokenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class AddUsersApiTokenField extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->string('api_token', 80)->after('password')
-                ->unique()
-                ->nullable()
-                ->default(null);
+        Schema::create('owner_tokens', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('owner_type');
+            $table->unsignedInteger('owner_id');
+            $table->string("token");
+            $table->dateTime('limited_at')->nullable();
+            $table->timestamps();
+
+            $table->index(['owner_type','owner_id']);
         });
     }
 
@@ -28,8 +32,6 @@ class AddUsersApiTokenField extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('api_token');
-        });
+        Schema::dropIfExists('owner_tokens');
     }
 }
